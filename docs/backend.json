@@ -1,0 +1,245 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the application.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The user's full name."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        },
+        "photoURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the user's profile picture."
+        },
+        "role": {
+          "type": "string",
+          "description": "The user's role.",
+          "enum": [
+            "user",
+            "admin"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time the user was created."
+        },
+        "stripeCustomerId": {
+          "type": "string",
+          "description": "The user's Stripe customer ID."
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "role",
+        "createdAt"
+      ]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A product available for purchase.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the product."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the product."
+        },
+        "price": {
+          "type": "number",
+          "description": "The price of the product."
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the product is currently available for purchase."
+        },
+        "imageURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the product's image."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the product."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time the product was created."
+        }
+      },
+      "required": [
+        "name",
+        "price",
+        "active",
+        "createdAt"
+      ]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "An order placed by a user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who placed the order."
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              },
+              "customization": {
+                "type": "object",
+                "properties": {
+                  "style": { "type": "string" },
+                  "photoDataUrl": { "type": "string", "format": "uri" },
+                  "textInput1": { "type": "string" },
+                  "textInput2": { "type": "string" },
+                  "additionalInstructions": { "type": "string" },
+                  "basePrice": { "type": "number" },
+                  "finalPrice": { "type": "number" },
+                  "lampOption": { "type": "string" },
+                  "lampPrice": { "type": "number" },
+                  "hasSwitch": { "type": "boolean" },
+                  "switchPrice": { "type": "number" }
+                }
+              }
+            }
+          },
+          "description": "The products included in the order."
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "The total price of the order."
+        },
+        "approvedPrice": {
+            "type": "number",
+            "description": "The final price approved by the admin if observations were made."
+        },
+        "shippingCost": {
+            "type": "number",
+            "description": "The cost of shipping for the order."
+        },
+        "observation": {
+            "type": "string",
+            "description": "Aggregated special instructions from the user for the order."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Pending",
+            "Awaiting Admin Approval",
+            "Approved",
+            "Production",
+            "Shipped",
+            "Delivered",
+            "Canceled"
+          ],
+          "description": "The status of the order."
+        },
+        "trackingCode": {
+            "type": "string",
+            "description": "The shipping tracking code for the order."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time the order was placed."
+        }
+      },
+      "required": [
+        "userId",
+        "products",
+        "totalPrice",
+        "status",
+        "createdAt"
+      ]
+    },
+    "Preview": {
+        "title": "AI Preview",
+        "description": "An AI-generated preview of a custom product.",
+        "type": "object",
+        "properties": {
+            "userId": { "type": "string" },
+            "prompt": { "type": "string" },
+            "imageUrl": { "type": "string", "format": "uri" },
+            "createdAt": { "type": "string", "format": "date-time"}
+        },
+        "required": ["userId", "prompt", "imageUrl", "createdAt"]
+    },
+    "CustomRequest": {
+        "title": "Custom Request or Quote",
+        "description": "A request for a service or a price quote submitted by a user.",
+        "type": "object",
+        "properties": {
+            "userId": { "type": "string" },
+            "productName": { "type": "string" },
+            "description": { "type": "string" },
+            "imageUrl": { "type": "string", "format": "uri" },
+            "status": { "type": "string", "enum": ["pending", "contacted", "resolved"]},
+            "createdAt": { "type": "string", "format": "date-time"}
+        },
+        "required": ["userId", "productName", "description", "status", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "google.com",
+      "facebook.com"
+    ]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Stores user profile information."
+    },
+    "/products/{productId}": {
+      "schema": {
+        "$ref": "#/entities/Product"
+      },
+      "description": "Stores product catalog information."
+    },
+    "/orders/{orderId}": {
+      "schema": {
+        "$ref": "#/entities/Order"
+      },
+      "description": "Stores customer order information."
+    },
+    "/previews/{previewId}": {
+      "schema": {
+        "$ref": "#/entities/Preview"
+      },
+      "description": "Stores AI-generated product previews for users."
+    },
+    "/custom_requests/{requestId}": {
+      "schema": {
+        "$ref": "#/entities/CustomRequest"
+      },
+      "description": "Stores user-submitted requests for services or quotes."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "Símbolo da marca DIM3NSÃO.",
+      "imageUrl": "/images/logo_simbolo.png",
+      "imageHint": "logo symbol"
+    },
+    {
+      "id": "showcase-funko",
+      "description": "A custom Funko-style figurine with personalized details.",
+      "imageUrl": "/images/miniaturaMA.png",
+      "imageHint": "funko pop"
+    },
+    {
+      "id": "showcase-litophane",
+      "description": "A litophane with a picture etched into it, glowing warmly.",
+      "imageUrl": "/images/litophane.jpg",
+      "imageHint": "litophane light"
+    },
+    {
+      "id": "showcase-doublename",
+      "description": "A 3D printed 'DoubleName' decor piece.",
+      "imageUrl": "/images/nomeduplo.png",
+      "imageHint": "3d text"
+    },
+    {
+      "id": "showcase-modeling",
+      "description": "A complex 3D model being designed on a computer screen.",
+      "imageUrl": "/images/desenvolvimento.png",
+      "imageHint": "3d modeling"
+    },
+    {
+      "id": "showcase-keychains",
+      "description": "A collection of custom 3D printed keychains.",
+      "imageUrl": "/images/chaveiro.jpg",
+      "imageHint": "3d keychains"
+    },
+    {
+      "id": "showcase-exclusive",
+      "description": "An exclusive, limited edition 3D printed figure.",
+      "imageUrl": "/images/Bobblehead.jpg",
+      "imageHint": "exclusive figure"
+    },
+    {
+      "id": "cta-banner",
+      "description": "Abstract futuristic background with glowing lines.",
+      "imageUrl": "/images/ideia.png",
+      "imageHint": "futuristic abstract"
+    }
+  ]
+}
