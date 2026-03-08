@@ -21,12 +21,7 @@ const differentials = [
   {
     icon: Scaling,
     title: "Atenção aos Detalhes",
-    description: "Nossa equipe de artistas e técnicos se dedica a cada detalhe, garantindo que o produto final seja uma réplica fiel da sua visão."
-  },
-  {
-    icon: Cpu,
-    title: "Tecnologia 3D Avançada",
-    description: "Empregamos as mais recentes tecnologias de modelagem e impressão 3D para oferecer precisão e resultados impressionantes."
+    description: "Nossa equipe de artistas e técnicos se dedica a cada detalhe, garantindo que seja o presente perfeito."
   },
   {
     icon: Heart,
@@ -122,13 +117,13 @@ export default function QuemSomosPage() {
                 <h2 className="text-4xl md:text-5xl font-headline font-bold uppercase text-glow mb-6">Nossa História</h2>
                 <div className="space-y-4 text-muted-foreground text-lg">
                   <p>
-                    A DIM3NSÃO nasceu da paixão por tecnologia e arte. Vimos na impressão 3D uma ponte entre o mundo digital e o físico, uma forma de dar vida a objetos que antes só existiam na imaginação.
+                    A DIM3NSÃO nasceu da paixão pela arte e tecnologia. Vimos na impressão 3D uma oportunidade de realizar um ato de presentear em algo valioso e memorável. Uma forma de dar vida nas datas especiais.
                   </p>
                   <p>
-                    Especializamo-nos em transformar fotos e ideias em criações memoráveis. Seja um abajur <strong className="text-primary/90">Litophane</strong> que revela um momento especial com a luz, ou uma miniatura personalizada no seu estilo favorito — <strong className="text-primary/90">Funko, Cartoon ou Realista 1:10</strong> —, nosso objetivo é criar peças que contem a sua história.
+                    Nos especializamos em transformar fotos e ideias em criações memoráveis. Seja um abajur <strong className="text-primary/90">Litophane</strong> que revela um momento especial com a luz, ou uma miniatura personalizada no seu estilo favorito — <strong className="text-primary/90">Funko, Cartoon ou Realista 1:10</strong> —, nosso objetivo é criar peças únicas que contem à sua história.
                   </p>
                    <p>
-                    Acreditamos que cada criação é mais do que um objeto; é uma experiência, um presente inesquecível e uma obra de arte pessoal.
+                    Acreditamos que entregamos mais que um presente. Uma obra artística que transpasa emoção dando vida às memórias inesquecíveis.
                   </p>
                 </div>
               </div>

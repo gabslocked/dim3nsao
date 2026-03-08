@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ArrowRight, Box, ImageIcon, TextCursorInput, Cpu, Layers, Zap, KeyRound, Scan, Crown, Scaling, Focus, PersonStanding, ScanFaceIcon, Camera, Paintbrush, Package, Star, ChevronDown, ShieldCheck, Mail } from "lucide-react";
+import { ArrowRight, Box, ImageIcon, TextCursorInput, Cpu, Layers, Zap, KeyRound, Scan, Crown, Scaling, Focus, PersonStanding, ScanFaceIcon, Camera, Paintbrush, Package, Star, ChevronDown, ShieldCheck, Mail, Heart } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, AnimatedCounter, TiltCard, Floating } from "@/components/animations";
 
 const heroImage = PlaceHolderImages.find(img => img.id === "hero-1");
@@ -39,14 +39,6 @@ const showcaseItems = [
     href: "/customize"
   },
   {
-    id: "modeling",
-    title: "Modelagem 3D .stl",
-    description: "Precisa de um modelo 3D ? \n Nós modelamos para você, pronto para impressão.",
-    icon: Box,
-    image: PlaceHolderImages.find(img => img.id === 'showcase-modeling'),
-    href: "/customize"
-  },
-  {
     id: "keychains",
     title: "Chaveiros",
     description: "Chaveiros personalizados com seu logo, nomes ou designs favoritos.",
@@ -55,13 +47,21 @@ const showcaseItems = [
     href: "/customize"
   },
   {
-    id: "exclusive",
+    id: "bobblehead",
     title: "Bobblehead",
-    description: "Exclusividade da DIM3NSÃO ! Faça o famoso Bobblehead, balançando a cabeça por onde passa.",
+    description: "Faça o famoso Bobblehead, balança a cabeça por onde passa.",
     icon: Crown,
     image: PlaceHolderImages.find(img => img.id === 'showcase-exclusive'),
     href: "/customize"
-  }
+  }, 
+  {
+    id: "modeling",
+    title: "Modelagem 3D .stl",
+    description: "Precisa de um modelo 3D ? \n Nós modelamos para você, pronto para impressão.",
+    icon: Box,
+    image: PlaceHolderImages.find(img => img.id === 'showcase-modeling'),
+    href: "/customize"
+  },
 ];
 
 const featureItems = [
@@ -73,26 +73,24 @@ const featureItems = [
     {
         icon: Focus,
         title: "Atenção aos Detalhes",
-        description: "Nossa equipe de artistas e técnicos se dedica a cada detalhe, garantindo que o produto final seja uma réplica fiel da sua visão."
+        description: "Nossa equipe de artistas e técnicos se dedicam a cada detalhe para garantir que seja o presente prefeito."
     },
     {
-        icon: Zap,
-        title: "Prototipagem Rápida",
-        description: "Da concepção à criação em tempo recorde, para que você receba seu produto o mais rápido possível."
+        icon: Heart,
+        title: "Fazemos com AMOR",
+        description: "Honramos o valor emocional em cada presente, por isso nos esforçamos para fazer com que cada peça seja uma obra de arte."
     }
 ];
 
 const howItWorksSteps = [
   { number: 1, icon: Camera, title: "Envie sua Foto", description: "Faça upload da sua melhor foto e escolha o estilo que mais combina com você." },
   { number: 2, icon: Paintbrush, title: "Criamos seu Modelo 3D", description: "Nossa equipe transforma sua imagem em uma peça 3D única com acabamento premium." },
-  { number: 3, icon: Package, title: "Receba em Casa", description: "Enviamos para todo o Brasil com embalagem especial e carta personalizada." },
+  { number: 3, icon: Package, title: "Receba em Casa", description: "Enviamos para todo o Brasil com carta personalizada." },
 ];
 
 const statsData = [
-  { target: 500, suffix: "+", label: "Clientes Satisfeitos" },
+  { target: 100, suffix: "+", label: "Clientes Satisfeitos" },
   { target: 1000, suffix: "+", label: "Peças Entregues" },
-  { target: 49, suffix: "/5", label: "Avaliação Média", divisor: 10 },
-  { target: 98, suffix: "%", label: "Taxa de Satisfação" },
 ];
 
 const testimonials = [
@@ -104,9 +102,9 @@ const testimonials = [
 const faqItems = [
   { q: "Quanto tempo leva para receber meu produto?", a: "O prazo de produção é de 5-25 dias úteis + prazo de envio dos Correios. Itens personalizados exigem cuidado extra para garantir qualidade!" },
   { q: "Posso pedir alterações depois do pedido?", a: "Sim! Antes de iniciarmos a produção, você pode solicitar ajustes. Após o início da impressão, alterações não são possíveis." },
-  { q: "Quais materiais vocês utilizam?", a: "Utilizamos PLA e resina de alta qualidade, com acabamento em pintura manual profissional para máximo realismo." },
+  { q: "Quais materiais vocês utilizam?", a: "Utilizamos PETG Premium e resina de alta qualidade, com acabamento em pintura manual profissional para à máxima perfeição." },
   { q: "Vocês enviam para todo o Brasil?", a: "Sim! Enviamos para todos os estados brasileiros via Correios, com código de rastreamento." },
-  { q: "Como funciona o pagamento?", a: "Aceitamos PIX, cartão de crédito e boleto. O pagamento é processado de forma segura." },
+  { q: "Como funciona o pagamento?", a: "Aceitamos PIX, cartão de crédito ou débito. O pagamento é processado de forma segura." },
 ];
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -291,7 +289,7 @@ export default function Home() {
         <div className="container max-w-screen-xl">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase text-glow">Números que Falam</h2>
+              <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase text-glow">Números não mentem</h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">A confiança dos nossos clientes é o nosso maior orgulho.</p>
             </div>
           </ScrollReveal>
@@ -335,7 +333,7 @@ export default function Home() {
           <ScrollReveal>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase text-glow">Perguntas Frequentes</h2>
-              <p className="mt-4 text-lg text-muted-foreground">Tire suas dúvidas sobre nossos produtos e serviços.</p>
+              <p className="mt-4 text-lg text-muted-foreground">Tire suas dúvidas sobre nossos produtos e serviços pelo chat no canto inferior direito.</p>
             </div>
           </ScrollReveal>
           <div className="space-y-4">
@@ -348,42 +346,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== GUARANTEE + EMAIL ===== */}
-      <section className="py-24 md:py-32 border-y border-border">
-        <div className="container max-w-screen-xl">
-          <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto">
-              <div className="mx-auto mb-6 p-4 bg-primary/10 rounded-full text-primary w-fit">
-                <ShieldCheck className="w-12 h-12" />
-              </div>
-              <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase text-glow">Satisfação Garantida</h2>
-              <p className="mt-6 text-lg text-muted-foreground">
-                Se você não ficar 100% satisfeito, refazemos seu produto sem custo adicional.
-              </p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.3}>
-            <div className="mt-16 max-w-md mx-auto">
-              <div className="flex gap-3">
-                <Input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  className="bg-card/80 border-white/10 h-12"
-                />
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-12 px-6 rounded-lg whitespace-nowrap">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Receber Novidades
-                </Button>
-              </div>
-              <p className="text-center text-sm text-muted-foreground mt-3">
-                Fique por dentro de promoções exclusivas e lançamentos.
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ===== CTA BANNER ===== */}
+    {/* ===== CTA BANNER ===== */}
       <section className="relative py-32 md:py-48">
         {ctaBannerImage && (
             <Image
