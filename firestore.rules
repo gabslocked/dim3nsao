@@ -1,0 +1,70 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Check if the current user is the administrator.
+    // The admin is identified by a specific email address as requested.
+    function isAdmin() {
+      return request.auth.token.email == "dim3nsao.3d@gmail.com";
+    }
+    
+    // Check if the user is the owner of the document.
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      // A user can create their own profile.
+      allow create: if isOwner(userId);
+      // A user can read or write their own profile. An admin can read any profile.
+      allow read, update: if isOwner(userId) || isAdmin();
+      // Users cannot delete their profiles from the client.
+      allow delete: if false;
+    }
+    
+    // Products collection
+    match /products/{productId} {
+      // Anyone can read products.
+      allow read: if true;
+      // Only admins can create, update, or delete products.
+      allow write: if isAdmin();
+    }
+    
+    // Orders collection
+    match /orders/{orderId} {
+      // Authenticated users can create their own orders.
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      // A user can read their own orders, and an admin can read any order.
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+      // Only an admin can update an order's status, price or tracking info.
+      allow update: if isAdmin();
+      // Deleting orders from the client is not allowed.
+      allow delete: if false;
+    }
+
+    // Previews collection for custom product designs.
+    match /previews/{previewId} {
+        // Users can create their own previews.
+        allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+        // Users can read their own previews, and admins can read any preview.
+        allow read: if isOwner(resource.data.userId) || isAdmin();
+        // Previews cannot be updated from the client.
+        allow update: if false;
+        // A user or an admin can delete previews.
+        allow delete: if isOwner(resource.data.userId) || isAdmin();
+    }
+
+    // Custom Requests collection for special user requests.
+    match /custom_requests/{requestId} {
+      // Authenticated users can create requests.
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      // The owner or an admin can read a request.
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+      // Only admins can update the status of a request.
+      allow update: if isAdmin();
+      // Deleting requests from the client is not allowed.
+      allow delete: if false;
+    }
+  }
+}
